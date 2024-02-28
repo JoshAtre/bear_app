@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race to Bear Mapper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='Chadbeer.png') }}" alt="Logo">
+        </div>
+        <h1>Race to Bear Mapper</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form method="POST">
+                <select id="race" name="race">
+                    <option value="" disabled selected>Select your race</option>
+                    <option value="Indian" {% if selected_race == 'Indian' %}selected{% endif %}>Indian</option>
+                    <option value="Chinese" {% if selected_race == 'Chinese' %}selected{% endif %}>Chinese</option>
+                    <option value="White" {% if selected_race == 'White' %}selected{% endif %}>White</option>
+                    <option value="Indonesian" {% if selected_race == 'Indonesian' %}selected{% endif %}>Indonesian</option>
+                    <option value="Black" {% if selected_race == 'Black' %}selected{% endif %}>Black</option>
+                    <option value="Hispanic" {% if selected_race == 'Hispanic' %}selected{% endif %}>Hispanic</option>
+                    <option value="Japanese" {% if selected_race == 'Japanese' %}selected{% endif %}>Japanese</option>
+                    <option value="Chadwick" {% if selected_race == 'Chadwick' %}selected{% endif %}>Chadwick</option>
+                    <option value="Middle Eastern" {% if selected_race == 'Middle Eastern' %}selected{% endif %}>Middle Eastern</option>
+                    <option value="Korean" {% if selected_race == 'Korean' %}selected{% endif %}>Korean</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+            {% if bear %}
+                <div class="result">
+                    <h2>You most resemble a {{ bear['bear'] }}!</h2>
+                    <img src="{{ url_for('static', filename=bear['image']) }}" alt="{{ bear['bear'] }} image">
+                </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
